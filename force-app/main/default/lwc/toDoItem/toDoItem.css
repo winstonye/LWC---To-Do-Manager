@@ -1,0 +1,31 @@
+/**
+ * Created by Winston Y on 8/20/2020.
+ */
+.todo {
+    border: 1px solid lightgray;
+    padding: .5rem;
+    width: fit-content;
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all .5s ease;
+}
+
+.upcoming {
+    background-color: lightcoral;
+}
+
+.upcoming:hover {
+    background-color: aliceblue;
+    border-radius: 16px;
+}
+
+.completed {
+    background-color: darkturquoise;
+}
+
+.completed:hover {
+    background-color: aquamarine;
+    border-radius: 16px;
+}

@@ -1,0 +1,12 @@
+<!--
+ - Created by Winston Y on 8/20/2020.
+ -->
+
+<!-- To Do Item -->
+<template>
+    <div class={containerClass}>
+        <span class="slds-text-heading_label">{toDoName}</span>
+        <lightning-button-icon icon-name= {iconName} class="slds-p-horizontal_medium" onclick={updateHandler} title="Update To Do"></lightning-button-icon>
+        <lightning-button-icon icon-name="utility:delete" onclick={deleteHandler} title="Delete To Do"></lightning-button-icon>
+    </div>
+</template>

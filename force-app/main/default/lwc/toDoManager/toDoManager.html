@@ -1,0 +1,63 @@
+<!--
+ - Created by Winston Y on 8/20/2020.
+ -->
+
+<!-- To Do Manager -->
+<template>
+    <!-- Display content   -->
+    <!-- Have CSS for class: container-->
+    <lightning-layout class="slds-align_absolute-center slds-text-align_center container" multiple-rows="true">
+        <lightning-layout-item size="12">
+            <!-- Have CSS for class: time-->
+            <div class="time">
+                <!-- This references the property declared at the js level -->
+                {time}
+            </div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12">
+            <!-- Have CSS for class: greeting-->
+            <div class="greeting">
+                <!-- This references the property declared at the js level -->
+                {greeting}
+            </div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12">
+            <div class="slds-text-heading_large slds-m-vertical_large"> What is your main focus for today?</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" large-device-size="6" medium-device-size="10" small-device-size="12" class="slds-m-top_large">
+            <lightning-layout>
+                <lightning-layout-item size="11">
+                    <lightning-input type ="text" label="What is on your mind?" variant="label-hidden" placeholder="What is on your mind?"></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="1">
+                    <lightning-button-icon  icon-name="utility:add" title="Add to do" onclick={addToDoHandler}></lightning-button-icon>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12">
+            <div>UPCOMING</div>
+            <!-- In order to render a list of items, we use for:each directive or the iterator directive to iterate over an array -->
+            <template for:each={upcomingTasks} for:item="toDoItem">
+                <!--
+                    To quickly create a class simply start with .(class-name) then press tab
+                    When using for each directive, we need to add a key attribute to the div class
+                -->
+
+                <!-- Need to listen to event called by child by adding the event name. For ex: onupdate -->
+                <c-to-do-item  key={toDoItem.toDoId} to-do-id={toDoItem.toDoId} to-do-name={toDoItem.toDoName}
+                               onupdate={updateHandler} ondelete={deleteHandler}></c-to-do-item>
+            </template>
+
+            <div>COMPLETED</div>
+            <template for:each={completedTasks} for:item="toDoItem">
+                <c-to-do-item  key={toDoItem.toDoId} to-do-id={toDoItem.toDoId} to-do-name={toDoItem.toDoName} done
+                               onupdate={updateHandler} ondelete={deleteHandler}></c-to-do-item>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
